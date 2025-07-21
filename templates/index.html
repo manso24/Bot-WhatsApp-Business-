@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Angola - Chatbot da Agência de Viagens</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-globe-africa"></i>
+                <h1>Explore Angola</h1>
+            </div>
+            <div class="tagline">
+                <p>Descubra as maravilhas de Angola com a nossa agência</p>
+            </div>
+        </header>
+
+        <!-- Main Chat Container -->
+        <div class="chat-container">
+            <!-- Sidebar com informações -->
+            <div class="sidebar">
+                <div class="sidebar-content">
+                    <h3><i class="fas fa-map-marked-alt"></i> Destinos Populares</h3>
+                    <ul class="destinations-list">
+                        <li><i class="fas fa-city"></i> Luanda - Capital vibrante</li>
+                        <li><i class="fas fa-water"></i> Benguela - Praias paradisíacas</li>
+                        <li><i class="fas fa-mountain"></i> Lubango - Fenda da Tundavala</li>
+                        <li><i class="fas fa-tree"></i> Huambo - Cidade das flores</li>
+                        <li><i class="fas fa-sun"></i> Namibe - Deserto único</li>
+                    </ul>
+
+                    <h3><i class="fas fa-concierge-bell"></i> Nossos Serviços</h3>
+                    <ul class="services-list">
+                        <li><i class="fas fa-suitcase"></i> Pacotes turísticos</li>
+                        <li><i class="fas fa-bed"></i> Reservas de hotéis</li>
+                        <li><i class="fas fa-car"></i> Aluguel de viaturas</li>
+                        <li><i class="fas fa-user-tie"></i> Guias especializados</li>
+                        <li><i class="fas fa-passport"></i> Vistos e documentação</li>
+                    </ul>
+
+                    <div class="contact-info">
+                        <h3><i class="fas fa-phone"></i> Contactos</h3>
+                        <p><i class="fas fa-envelope"></i> info@exploreangola.ao</p>
+                        <p><i class="fas fa-phone"></i> +244 923 456 789</p>
+                        <p><i class="fas fa-map-marker"></i> Luanda, Angola</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Area -->
+            <div class="chat-area">
+                <div class="chat-header">
+                    <div class="chat-title">
+                        <i class="fas fa-robot"></i>
+                        <span>Assistente Virtual da Explore Angola</span>
+                    </div>
+                    <div class="status-indicator">
+                        <span class="status-dot online"></span>
+                        <span>Online</span>
+                    </div>
+                </div>
+
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message bot-message">
+                        <div class="message-avatar">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="message-content">
+                            <p>Olá! Bem-vindo à <strong>Explore Angola</strong>! 🇦🇴</p>
+                            <p>Sou o seu assistente virtual especializado em viagens por Angola. Como posso ajudá-lo hoje?</p>
+                            <ul>
+                                <li>🏖️ Explorar destinos incríveis</li>
+                                <li>🏨 Encontrar acomodações</li>
+                                <li>🚗 Planear a sua viagem</li>
+                                <li>📋 Informações sobre documentação</li>
+                            </ul>
+                            <p>Que tipo de experiência está à procura?</p>
+                        </div>
+                        <div class="message-time">Agora</div>
+                    </div>
+                </div>
+
+                <div class="quick-actions">
+                    <button class="quick-btn" onclick="sendQuickMessage('Quero conhecer as Cataratas de Kalandula')">
+                        <i class="fas fa-water"></i> Cataratas de Kalandula
+                    </button>
+                    <button class="quick-btn" onclick="sendQuickMessage('Pacotes para Luanda')">
+                        <i class="fas fa-city"></i> Pacotes Luanda
+                    </button>
+                    <button class="quick-btn" onclick="sendQuickMessage('Safari no Parque da Kissama')">
+                        <i class="fas fa-paw"></i> Safari Kissama
+                    </button>
+                    <button class="quick-btn" onclick="sendQuickMessage('Deserto do Namibe')">
+                        <i class="fas fa-sun"></i> Deserto Namibe
+                    </button>
+                </div>
+
+                <div class="chat-input-container">
+                    <div class="input-wrapper">
+                        <input type="text" id="messageInput" placeholder="Digite a sua mensagem..." maxlength="500">
+                        <button id="sendButton" onclick="sendMessage()">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    <div class="input-actions">
+                        <button class="action-btn" onclick="clearChat()">
+                            <i class="fas fa-trash"></i> Limpar
+                        </button>
+                        <button class="action-btn" onclick="exportChat()">
+                            <i class="fas fa-download"></i> Exportar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading Spinner -->
+        <div class="loading-spinner" id="loadingSpinner">
+            <div class="spinner"></div>
+            <p>O assistente está a responder...</p>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 Explore Angola - Agência de Viagens. Todos os direitos reservados.</p>
+            <p>Desenvolvido com tecnologia de IA para melhor servir os nossos clientes</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
